@@ -1,0 +1,353 @@
+body {
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none; /* for Firefox */
+  overflow-y: scro;
+background-size: cover;
+  
+  
+
+}
+
+body::-webkit-scrollbar {
+  display: none; /* for Chrome, Safari, and Opera */
+}
+div {
+  margin-left: auto;
+  margin-right: auto;
+  
+  
+  
+}
+
+.kopazar {
+  max-width:100%;
+  table-layout: fixed;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5;
+  border-collapse: collapse;
+
+  font-size: 0.9em;
+  font-family: "Fira Code", monospace;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  width: 70%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.kopazar thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
+}
+.kopazar th,
+.kopazar td {
+  padding: 12px 15px;
+}
+.kopazar tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.kopazar tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.kopazar tbody tr:last-of-type {
+  border-bottom: 2px solid #000000;
+}
+.kopazar tbody tr:hover {
+  font-weight: bold;
+  color: #009879;
+}
+
+.oyunfor {
+  max-width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5;
+  font-size: 0.9em;
+  font-family: "Fira Code", monospace;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  width: 70%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.oyunfor thead tr {
+  background-color: #dfa70d;
+  color: #ffffff;
+  text-align: left;
+}
+.oyunfor th,
+.oyunfor td {
+  padding: 12px 15px;
+}
+.oyunfor tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.oyunfor tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.oyunfor tbody tr:last-of-type {
+  border-bottom: 2px solid #000000;
+}
+.oyunfor tbody tr:hover {
+  font-weight: bold;
+  color: #dfa70d;
+}
+
+.klasgame {
+  max-width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5;
+  font-size: 0.9em;
+  font-family: "Fira Code", monospace;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  width: 70%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.klasgame thead tr {
+  background-color: #6b0c5e;
+  color: #ffffff;
+  text-align: left;
+}
+.klasgame th,
+.klasgame td {
+  padding: 12px 15px;
+}
+.klasgame tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.klasgame tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.klasgame tbody tr:last-of-type {
+  border-bottom: 2px solid #000000;
+}
+.klasgame tbody tr:hover {
+  font-weight: bold;
+  color: #6b0c5e;
+}
+.bynogame {
+  max-width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5;
+  font-size: 0.9em;
+  font-family: "Fira Code", monospace;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  width: 70%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.bynogame thead tr {
+  background-color: #2e0ca8;
+  color: #ffffff;
+  text-align: left;
+}
+.bynogame th,
+.bynogame td {
+  padding: 12px 15px;
+}
+.bynogame tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.bynogame tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.bynogame tbody tr:last-of-type {
+  border-bottom: 2px solid #000000;
+}
+.bynogame tbody tr:hover {
+  font-weight: bold;
+  color: #2e0ca8;
+}
+.yyg {
+  max-width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5;
+  font-size: 0.9em;
+  font-family: "Fira Code", monospace;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  width: 70%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.yyg thead tr {
+  background-color: #0d441e;
+  color: #ffffff;
+  text-align: left;
+}
+.yyg th,
+.yyg td {
+  padding: 12px 15px;
+}
+.yyg tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.yyg tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.yyg tbody tr:last-of-type {
+  border-bottom: 2px solid #000000;
+}
+.yyg tbody tr:hover {
+  font-weight: bold;
+  color: #0d441e;
+}
+
+.bubble {
+  display: block;
+  position: absolute;
+  cursor: pointer;
+}
+
+.bubble:hover:after {
+  background-color: green;
+}
+
+.bubble:after {
+  content: "";
+  background-color: green;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  position: absolute;
+  display: block;
+  top: 1px;
+  left: 1px;
+}
+
+.bubble .bubble-outer-dot {
+  margin: 1px;
+  display: block;
+  text-align: center;
+  opacity: 1;
+  background-color: green;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  -webkit-animation: bubble-pulse 1.5s linear infinite;
+  -moz-animation: bubble-pulse 1.5s linear infinite;
+  -o-animation: bubble-pulse 1.5s linear infinite;
+  animation: bubble-pulse 1.5s linear infinite;
+}
+
+.bubble .bubble-inner-dot {
+  display: block;
+  text-align: center;
+  opacity: 1;
+  background-color: green;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  -webkit-animation: bubble-pulse 1.5s linear infinite;
+  -moz-animation: bubble-pulse 1.5s linear infinite;
+  -o-animation: bubble-pulse 1.5s linear infinite;
+  animation: bubble-pulse 1.5s linear infinite;
+}
+
+.bubble .bubble-inner-dot:after {
+  content: "";
+  display: block;
+  text-align: center;
+  opacity: 1;
+  background-color: green;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  -webkit-animation: bubble-pulse 1.5s linear infinite;
+  -moz-animation: bubble-pulse 1.5s linear infinite;
+  -o-animation: bubble-pulse 1.5s linear infinite;
+  animation: bubble-pulse 1.5s linear infinite;
+}
+
+@-webkit-keyframes bubble-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.75;
+  }
+  25% {
+    transform: scale(1);
+    opacity: 0.75;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+@keyframes bubble-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.75;
+  }
+  25% {
+    transform: scale(1);
+    opacity: 0.75;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+@-moz-keyframes bubble-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.75;
+  }
+  25% {
+    transform: scale(1);
+    opacity: 0.75;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+@-o-keyframes bubble-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.75;
+  }
+  25% {
+    transform: scale(1);
+    opacity: 0.75;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+/*Center-div (Not part of the symbol)*/
+
+#center-div {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  width: 14px;
+  height: 14px;
+}

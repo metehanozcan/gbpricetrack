@@ -1,0 +1,56 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+  $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+  (function(){
+      $.getJSON(
+          $SCRIPT_ROOT+"/update", // Your AJAX route here
+          function(data) {
+              $("#table").html(data.table);
+              $("#table1").html(data.table1);
+              $("#table2").html(data.table2);
+              $("#table3").html(data.table3);
+              $("#table4").html(data.table4);
+
+          }
+      );
+      150000;
+  })();
+</script>
+
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Fira+Code&display=swap");
+</style>
+<html>
+  <body>
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1,user- scalable=0"
+      />
+      <meta http-equiv="refresh" content="150" />
+
+      <title>Gbfiyat</title>
+      <link
+        rel="stylesheet"
+        type="text/css"
+        href="{{ url_for('static',filename='styles/df_style.css') }}"
+      />
+    </head>
+
+    <div>
+      <div class="bubble">
+        <span class="bubble-outer-dot">
+          <span class="bubble-inner-dot"></span>
+        </span>
+      </div>
+
+      <div id="table">{{table | safe}}</div>
+      <div id="table1">{{table1 | safe}}</div>
+      <div id="table2">{{table2 | safe}}</div>
+      <div id="table3">{{table3| safe}}</div>
+      <div id="table4">{{table4| safe}}</div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,7 @@
+gunicorn
+grequests
+beautifulsoup4
+lxml
+requests
+pandas
+flask
