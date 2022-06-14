@@ -321,4 +321,4 @@ def job():
     return [kopazar_html, bynogame_html, oyunfor_html, yyg_html, klasgame_html]
 
 
-job()
+# job()
