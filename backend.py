@@ -6,12 +6,10 @@ import requests
 import pandas as pd
 import json
 
+""" 
+Oldies are goldies.
 
-
-
-
-
-
+"""
 def c_oyunfor(oynfor):
     oyunforalis = []
     oyunforsatis = []
@@ -51,12 +49,11 @@ def c_yyg():
     yygsatis = []
     while not yygalis:
         time.sleep(0.1)
-        
+
         yyg = requests.get(
             "https://www.yesilyurtgame.com/oyun-parasi/knight-online-goldbar-gb", timeout=5
         )
         yygsoup = BeautifulSoup(yyg.content, "lxml")
-        
 
         for urunler in yygsoup.find_all("section"):
             try:
@@ -76,15 +73,14 @@ def c_yyg():
                     yygsatis.append(float(ys)*10)
                 else:
                     break
-                
+
             except Exception as e:
                 pass
     print("YYG Success.", yygalis, yygsatis)
-    
+
     return [yygalis, yygsatis]
 
-        
-    
+
 # *---BYNOGAME-----BYNOGAME-----BYNOGAME-----BYNOGAME-----BYNOGAME-----BYNOGAME-----BYNOGAME-----BYNOGAME-----BYNOGAME-----BYNOGAME-----BYNOGAME-----
 
 
@@ -102,7 +98,6 @@ def c_bynogame(soup):
             i = i.replace(',', ".")
             if len(bynogamealis) < 9:
                 bynogamealis.append(float(i))
-        
 
         for i in tler.find_all(class_="btn btn-block px-4 py-3 font-weight-bolder btn-outline-bng-black p-2"):
 
@@ -133,7 +128,6 @@ def c_kopazar(kopzr):
             kp_af = float(kp_af)
             if len(kopazaralis) < 9:
                 kopazaralis.append(kp_af * 10)
-            
 
     except Exception as e:
 
@@ -188,7 +182,7 @@ def c_klasgame(klsgame):
             tr = tr.replace(",", ".")
             # print(tr)
             tr = float(tr)
-            if len(klasgamealis) <= 9 and len(klasgamesatis)<9:
+            if len(klasgamealis) <= 9 and len(klasgamesatis) < 9:
                 if v % 2 == 0:
                     klasgamealis.append(tr*10)
                     v += 1
@@ -207,7 +201,7 @@ def c_klasgame(klsgame):
 
 
 def job():
-    
+
     urls = ["https://www.bynogame.com/tr/oyunlar/knight-online/gold-bar",
             "https://www.oyunfor.com/knight-online/gb-gold-bar",
             "https://www.kopazar.com/knight-online-gold-bar",
@@ -222,107 +216,109 @@ def job():
     kopzr = BeautifulSoup(x[2].content, "html.parser")
     klsgame = BeautifulSoup(x[3].content, "lxml")
     try:
-        yyg_data=c_yyg()        
-        
+        yyg_data = c_yyg()
+
     except Exception as e:
-        yyg_data[0]=[0]*9
-        yyg_data[1]=[0]*9
+        yyg_data[0] = [0]*9
+        yyg_data[1] = [0]*9
         print("yyg_err", e)
-        
+
     try:
-        bynogame_data=c_bynogame(soup)
-        
-            
+        bynogame_data = c_bynogame(soup)
+
     except Exception as e:
-        bynogame_data[0]=[0]*9
-        bynogame_data[1]=[0]*9
+        bynogame_data[0] = [0]*9
+        bynogame_data[1] = [0]*9
         print("byno_err", e)
     try:
-        kopazar_data=c_kopazar(kopzr)
-        
+        kopazar_data = c_kopazar(kopzr)
+
     except Exception as e:
-        kopazar_data[0]=[0]*9
-        kopazar_data[1]=[0]*9
+        kopazar_data[0] = [0]*9
+        kopazar_data[1] = [0]*9
         print("kopazar_err", e)
-    
-    try:   
-        klasgame_data=c_klasgame(klsgame)
-        
-    except:
-        klasgame_data[0]=[0]*9
-        klasgame_data[1]=[0]*9
+
     try:
-        oyunfor_data=c_oyunfor(oynfor)
-       
+        klasgame_data = c_klasgame(klsgame)
+
     except:
-        oyunfor_data[0]=[0]*9
-        oyunfor_data[1]=[0]*9
-    
-    df_kopazar = pd.DataFrame({"Sunucu": ["Altar","Vega","Sirius","Ares","Diez","Gordion","Rosetta","Olympia","Destan"],
+        klasgame_data[0] = [0]*9
+        klasgame_data[1] = [0]*9
+    try:
+        oyunfor_data = c_oyunfor(oynfor)
 
-                       "Kopazar Alış": kopazar_data[0],
+    except:
+        oyunfor_data[0] = [0]*9
+        oyunfor_data[1] = [0]*9
 
-                       "Kopazar Satış": kopazar_data[1],
+    df_kopazar = pd.DataFrame({"Sunucu": ["Altar", "Vega", "Sirius", "Ares", "Diez", "Gordion", "Rosetta", "Olympia", "Destan"],
 
-                       })
-    
-    df_kopazar=df_kopazar.sort_values("Sunucu")
-    
-    df_bynogame = pd.DataFrame({"Sunucu": ["Sirius","Vega","Altar","Destan","Olympia","Ares","Diez","Gordion","Rosetta"],
+                               "Kopazar Alış": kopazar_data[0],
 
-                       "Bynogame Alış": bynogame_data[0],
+                               "Kopazar Satış": kopazar_data[1],
 
-                       "Bynogame Satış": bynogame_data[1],
+                               })
 
-                       })
-    df_bynogame=df_bynogame.sort_values("Sunucu")
-    df_yyg = pd.DataFrame({"Sunucu": ["Altar","Sirius","Vega","Destan","Rosetta","Olympia","Ares","Diez","Gordion"],
+    df_kopazar = df_kopazar.sort_values("Sunucu")
 
-                       "Yyg Alış": yyg_data[0],
+    df_bynogame = pd.DataFrame({"Sunucu": ["Sirius", "Vega", "Altar", "Destan", "Olympia", "Ares", "Diez", "Gordion", "Rosetta"],
 
-                       "Yyg Satış": yyg_data[1],
+                                "Bynogame Alış": bynogame_data[0],
 
-                       })
-    df_yyg=df_yyg.sort_values("Sunucu")
-    
-    df_klasgame = pd.DataFrame({"Sunucu": ["Altar","Sirius","Vega","Destan","Rosetta","Olympia","Ares","Diez","Gordion"],
+                                "Bynogame Satış": bynogame_data[1],
 
-                       "Klasgame Alış": klasgame_data[0],
+                                })
+    df_bynogame = df_bynogame.sort_values("Sunucu")
+    df_yyg = pd.DataFrame({"Sunucu": ["Altar", "Sirius", "Vega", "Destan", "Rosetta", "Olympia", "Ares", "Diez", "Gordion"],
 
-                       "Klasgame Satış": klasgame_data[1],
+                           "Yyg Alış": yyg_data[0],
 
-                       })
-    df_klasgame=df_klasgame.sort_values("Sunucu")
-    
-    df_oyunfor = pd.DataFrame({"Sunucu": ["Altar","Sirius","Vega","Destan","Rosetta","Diez","Ares","Olympia","Gordion"],
+                           "Yyg Satış": yyg_data[1],
 
-                       "Oyunfor Alış": oyunfor_data[0],
+                           })
+    df_yyg = df_yyg.sort_values("Sunucu")
 
-                       "Oyunfor Satış": oyunfor_data[1],
+    df_klasgame = pd.DataFrame({"Sunucu": ["Altar", "Sirius", "Vega", "Destan", "Rosetta", "Olympia", "Ares", "Diez", "Gordion"],
 
-                       })                   
-    df_oyunfor=df_oyunfor.sort_values("Sunucu")
-    
+                                "Klasgame Alış": klasgame_data[0],
 
-    kopazar_html = df_kopazar.to_html(index=False,classes='Kopazar',border='0',justify='left')
-    bynogame_html = df_bynogame.to_html(index=False,classes='Bynogame',border='0',justify='left')
-    oyunfor_html = df_oyunfor.to_html(index=False,classes='Oyunfor',border='0',justify='left')
-    yyg_html=df_yyg.to_html(index=False,classes='Yyg',border='0',justify='left')
-    klasgame_html=df_klasgame.to_html(index=False,classes='Klasgame',border='0',justify='left')
-    
+                                "Klasgame Satış": klasgame_data[1],
+
+                                })
+    df_klasgame = df_klasgame.sort_values("Sunucu")
+
+    df_oyunfor = pd.DataFrame({"Sunucu": ["Altar", "Sirius", "Vega", "Destan", "Rosetta", "Diez", "Ares", "Olympia", "Gordion"],
+
+                               "Oyunfor Alış": oyunfor_data[0],
+
+                               "Oyunfor Satış": oyunfor_data[1],
+
+                               })
+    df_oyunfor = df_oyunfor.sort_values("Sunucu")
+
+    kopazar_html = df_kopazar.to_html(
+        index=False, classes='Kopazar', border='0', justify='left')
+    bynogame_html = df_bynogame.to_html(
+        index=False, classes='Bynogame', border='0', justify='left')
+    oyunfor_html = df_oyunfor.to_html(
+        index=False, classes='Oyunfor', border='0', justify='left')
+    yyg_html = df_yyg.to_html(
+        index=False, classes='Yyg', border='0', justify='left')
+    klasgame_html = df_klasgame.to_html(
+        index=False, classes='Klasgame', border='0', justify='left')
+
     # table_all = []
     # table_all=kopazar_html,bynogame_html,oyunfor_html,yyg_html,klasgame_html
     # tablejson= json.dumps(table_all)
     # tablejson_file = open("tabledata.json", "w")
     # tablejson_file.write(tablejson)
     # tablejson_file.close()
-    
-    
+
     # fileObject = open("tabledata.json", "r")
     # jsonContent = fileObject.read()
     # tablecontent = json.loads(jsonContent)
     # print(tablecontent[1])
-    return [kopazar_html,bynogame_html,oyunfor_html,yyg_html,klasgame_html]
+    return [kopazar_html, bynogame_html, oyunfor_html, yyg_html, klasgame_html]
 
 
 job()
