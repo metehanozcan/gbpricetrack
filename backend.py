@@ -7,7 +7,7 @@ import pandas as pd
 import json
 
 """ 
-Oldies are goldies.
+Spagetti oldies are goldies.
 
 """
 def c_oyunfor(oynfor):
@@ -219,6 +219,7 @@ def job():
         yyg_data = c_yyg()
 
     except Exception as e:
+        yyg_data=[None,None]
         yyg_data[0] = [0]*9
         yyg_data[1] = [0]*9
         print("yyg_err", e)
@@ -227,6 +228,7 @@ def job():
         bynogame_data = c_bynogame(soup)
 
     except Exception as e:
+        bynogame_data=[None,None]
         bynogame_data[0] = [0]*9
         bynogame_data[1] = [0]*9
         print("byno_err", e)
@@ -234,6 +236,7 @@ def job():
         kopazar_data = c_kopazar(kopzr)
 
     except Exception as e:
+        kopazar_data=[None,None]
         kopazar_data[0] = [0]*9
         kopazar_data[1] = [0]*9
         print("kopazar_err", e)
@@ -242,12 +245,14 @@ def job():
         klasgame_data = c_klasgame(klsgame)
 
     except:
+        klasgame_data=[None,None]
         klasgame_data[0] = [0]*9
         klasgame_data[1] = [0]*9
     try:
         oyunfor_data = c_oyunfor(oynfor)
 
     except:
+        oyunfor_data=[None,None]
         oyunfor_data[0] = [0]*9
         oyunfor_data[1] = [0]*9
 
