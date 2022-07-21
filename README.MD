@@ -1,4 +1,6 @@
-# A basic price tracking website that collects data via python, controlled by flask and ajax.
+# A basic price tracking website that collects data via python.
+[GbFiyat Website](http://gbfiyat.herokuapp.com/ "GbFiyat Website")
+
 ![App Preview](https://gcdnb.pbrd.co/images/T1GRipeKGEhc.png?o=1 "App Preview")
 
 ## What does this app do? 
