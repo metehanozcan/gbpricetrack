@@ -4,12 +4,10 @@ from bs4 import BeautifulSoup
 import re
 import requests
 import pandas as pd
-import json
-
-""" 
-Spagetti oldies are goldies.
-
 """
+Spagetti oldies lol
+"""
+
 def c_oyunfor(oynfor):
     oyunforalis = []
     oyunforsatis = []
@@ -75,7 +73,7 @@ def c_yyg():
                     break
 
             except Exception as e:
-                pass
+                print("Yyg_err", e)
     print("YYG Success.", yygalis, yygsatis)
 
     return [yygalis, yygsatis]
@@ -194,14 +192,15 @@ def c_klasgame(klsgame):
     except Exception as e:
 
         print("klsgame_err", e)
-    print("Klasgame Success.", klasgamealis, klasgamesatis)
+        klasgamealis=[0 for i in range(9)]
+        klasgamesatis=[0 for i in range(9)]
     return [klasgamealis, klasgamesatis]
 
     # * OYUNFOR-------OYUNFOR-------OYUNFOR-------OYUNFOR-------OYUNFOR-------OYUNFOR-------OYUNFOR-------OYUNFOR-------OYUNFOR-------OYUNFOR-------OYUNFOR-------
 
 
 def job():
-
+    time.sleep(1)
     urls = ["https://www.bynogame.com/tr/oyunlar/knight-online/gold-bar",
             "https://www.oyunfor.com/knight-online/gb-gold-bar",
             "https://www.kopazar.com/knight-online-gold-bar",
@@ -217,44 +216,44 @@ def job():
     klsgame = BeautifulSoup(x[3].content, "lxml")
     try:
         yyg_data = c_yyg()
-
-    except Exception as e:
-        yyg_data=[None,None]
-        yyg_data[0] = [0]*9
-        yyg_data[1] = [0]*9
-        print("yyg_err", e)
-
+        if len(yyg_data[0])<9 or (len(yyg_data[0]) != len(yyg_data[1])):
+            yyg_data[0]=['err' for i in range(9)]
+            yyg_data[1]=['err' for i in range(9)]
+    except:
+        yyg_data[0]=['err' for i in range(9)]
+        yyg_data[1]=['err' for i in range(9)]
     try:
         bynogame_data = c_bynogame(soup)
-
-    except Exception as e:
-        bynogame_data=[None,None]
-        bynogame_data[0] = [0]*9
-        bynogame_data[1] = [0]*9
-        print("byno_err", e)
+        if len(bynogame_data[0])<9 or (len(bynogame_data[0]) != len(bynogame_data[1])):
+            bynogame_data[0]=['err' for i in range(9)]
+            bynogame_data[1]=['err' for i in range(9)]
+    except:
+        bynogame_data[0] = ['err' for i in range(9)]
+        bynogame_data[1] = ['err' for i in range(9)]
     try:
         kopazar_data = c_kopazar(kopzr)
-
-    except Exception as e:
-        kopazar_data=[None,None]
-        kopazar_data[0] = [0]*9
-        kopazar_data[1] = [0]*9
-        print("kopazar_err", e)
-
+        if len(kopazar_data[0])<9 or (len(kopazar_data[0]) != len(kopazar_data[1])):
+            kopazar_data[0]=['err' for i in range(9)]
+            kopazar_data[1]=['err' for i in range(9)]
+    except:
+        kopazar_data[0] = ['err' for i in range(9)]
+        kopazar_data[1] = ['err' for i in range(9)]
     try:
         klasgame_data = c_klasgame(klsgame)
-
+        if len(klasgame_data[0])<9 or (len(klasgame_data[0]) != len(klasgame_data[1])):
+            klasgame_data[0]=['err' for i in range(9)]
+            klasgame_data[1]=['err' for i in range(9)]
     except:
-        klasgame_data=[None,None]
-        klasgame_data[0] = [0]*9
-        klasgame_data[1] = [0]*9
+        klasgame_data[0] = ['err' for i in range(9)]
+        klasgame_data[1] = ['err' for i in range(9)]
     try:
         oyunfor_data = c_oyunfor(oynfor)
-
+        if len(oyunfor_data[0])<9 or (len(oyunfor_data[0]) != len(oyunfor_data[1])):
+            oyunfor_data[0]=['err' for i in range(9)]
+            oyunfor_data[1]=['err' for i in range(9)]
     except:
-        oyunfor_data=[None,None]
-        oyunfor_data[0] = [0]*9
-        oyunfor_data[1] = [0]*9
+        oyunfor_data[0] = ['err' for i in range(9)]
+        oyunfor_data[1] = ['err' for i in range(9)]
 
     df_kopazar = pd.DataFrame({"Sunucu": ["Altar", "Vega", "Sirius", "Ares", "Diez", "Gordion", "Rosetta", "Olympia", "Destan"],
 
@@ -312,18 +311,4 @@ def job():
     klasgame_html = df_klasgame.to_html(
         index=False, classes='Klasgame', border='0', justify='left')
 
-    # table_all = []
-    # table_all=kopazar_html,bynogame_html,oyunfor_html,yyg_html,klasgame_html
-    # tablejson= json.dumps(table_all)
-    # tablejson_file = open("tabledata.json", "w")
-    # tablejson_file.write(tablejson)
-    # tablejson_file.close()
-
-    # fileObject = open("tabledata.json", "r")
-    # jsonContent = fileObject.read()
-    # tablecontent = json.loads(jsonContent)
-    # print(tablecontent[1])
     return [kopazar_html, bynogame_html, oyunfor_html, yyg_html, klasgame_html]
-
-
-# job()
