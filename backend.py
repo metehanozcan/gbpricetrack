@@ -4,9 +4,8 @@ from bs4 import BeautifulSoup
 import re
 import requests
 import pandas as pd
-"""
-Spagetti oldies lol
-"""
+import json
+
 
 def c_oyunfor(oynfor):
     oyunforalis = []
@@ -85,7 +84,7 @@ def c_yyg():
 def c_bynogame(soup):
     bynogamealis = []
     bynogamesatis = []
-    tler = soup.find(class_="col-md-18 order-1 order-sm-12")
+    tler = soup.find(class_="col-xl-18 col-lg-24 col-md-24 order-1 order-sm-12")
 
     try:
         for i in tler.find_all(class_="col"):
@@ -220,6 +219,7 @@ def job():
             yyg_data[0]=['err' for i in range(9)]
             yyg_data[1]=['err' for i in range(9)]
     except:
+        yyg_data=[[],[]]
         yyg_data[0]=['err' for i in range(9)]
         yyg_data[1]=['err' for i in range(9)]
     try:
@@ -228,6 +228,7 @@ def job():
             bynogame_data[0]=['err' for i in range(9)]
             bynogame_data[1]=['err' for i in range(9)]
     except:
+        bynogame_data=[[],[]]
         bynogame_data[0] = ['err' for i in range(9)]
         bynogame_data[1] = ['err' for i in range(9)]
     try:
@@ -236,6 +237,7 @@ def job():
             kopazar_data[0]=['err' for i in range(9)]
             kopazar_data[1]=['err' for i in range(9)]
     except:
+        kopazar_data=[[],[]]
         kopazar_data[0] = ['err' for i in range(9)]
         kopazar_data[1] = ['err' for i in range(9)]
     try:
@@ -244,6 +246,7 @@ def job():
             klasgame_data[0]=['err' for i in range(9)]
             klasgame_data[1]=['err' for i in range(9)]
     except:
+        klasgame_data=[[],[]]
         klasgame_data[0] = ['err' for i in range(9)]
         klasgame_data[1] = ['err' for i in range(9)]
     try:
@@ -252,6 +255,7 @@ def job():
             oyunfor_data[0]=['err' for i in range(9)]
             oyunfor_data[1]=['err' for i in range(9)]
     except:
+        oyunfor_data=[[],[]]
         oyunfor_data[0] = ['err' for i in range(9)]
         oyunfor_data[1] = ['err' for i in range(9)]
 
@@ -309,6 +313,8 @@ def job():
     yyg_html = df_yyg.to_html(
         index=False, classes='Yyg', border='0', justify='left')
     klasgame_html = df_klasgame.to_html(
-        index=False, classes='Klasgame', border='0', justify='left')
+        index=False, classes='Klasgame', border='0', justify='left')   
+    
+    
 
     return [kopazar_html, bynogame_html, oyunfor_html, yyg_html, klasgame_html]
