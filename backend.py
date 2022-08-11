@@ -5,6 +5,7 @@ import re
 import requests
 import pandas as pd
 import json
+import cchardet
 
 
 def c_oyunfor(oynfor):
@@ -14,9 +15,9 @@ def c_oyunfor(oynfor):
 
     for l in fiyat_oynfor:
         textlm = l.text
-        textlm = textlm.replace("Bize Sat ", "").replace("TL", "").replace("\n", "")      
-        
-        
+        textlm = textlm.replace("Bize Sat ", "").replace(
+            "TL", "").replace("\n", "")
+
         if len(oyunforalis) < 9:
             oyunforalis.append(float(textlm) * 10)
         else:
@@ -25,7 +26,7 @@ def c_oyunfor(oynfor):
     for k in oynfor.find_all(class_="flex-row mobile"):
         textlms = k.text
         textlms = textlms.replace(" ", "").replace("TL", "").replace("\n", "")
-        
+
         try:
             if len(oyunforsatis) < 9:
                 oyunforsatis.append(float(textlms) * 10)
@@ -38,15 +39,15 @@ def c_oyunfor(oynfor):
     return [oyunforalis, oyunforsatis]
 
 
-def  c_yyg():
-    header={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36'}
+def c_yyg():
+    header = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36'}
     yygalis = []
     yygsatis = []
-    while not yygalis:
-        time.sleep(0.1)
+    while not yygalis:        
 
         yyg = requests.get(
-            "https://www.yesilyurtgame.com/oyun-parasi/knight-online-goldbar-gb", timeout=5,headers=header
+            "https://www.yesilyurtgame.com/oyun-parasi/knight-online-goldbar-gb", timeout=5, headers=header
         )
         yygsoup = BeautifulSoup(yyg.content, "lxml")
 
@@ -82,22 +83,23 @@ def  c_yyg():
 def c_bynogame(soup):
     bynogamealis = []
     bynogamesatis = []
-    tler = soup.find(class_="col-xl-18 col-lg-24 col-md-24 order-1 order-sm-12")
+    tler = soup.find(
+        class_="col-xl-18 col-lg-24 col-md-24 order-1 order-sm-12")
 
     try:
         for i in tler.find_all(class_="col"):
             i = i.text
             i = i.replace('TL', "").replace('\n', "").replace(',', ".")
-            
-                        
+
             if len(bynogamealis) < 9:
                 bynogamealis.append(float(i))
 
         for i in tler.find_all(class_="btn btn-block px-4 py-3 font-weight-bolder btn-outline-bng-black p-2"):
 
             i = i.text
-            i = i.replace("TL'den BİZE SAT", "").replace('\n', "").replace(',', ".")
-            
+            i = i.replace("TL'den BİZE SAT", "").replace(
+                '\n', "").replace(',', ".")
+
             if len(bynogamesatis) < 9:
                 bynogamesatis.append(float(i))
         print("BynoGame Success", bynogamealis, bynogamesatis)
@@ -117,7 +119,7 @@ def c_kopazar(kopzr):
         for kp_af in kopzr.find_all(class_="caret-up"):
             kp_af = kp_af.string
             kp_af = kp_af.replace(" ", "").replace("₺", "")
-            
+
             kp_af = float(kp_af)
             if len(kopazaralis) < 9:
                 kopazaralis.append(kp_af * 10)
@@ -137,9 +139,10 @@ def c_kopazar(kopzr):
         ):
 
             #! String Değiştirme
-            kp_sf = kp_sf.text            
-            kp_sf = kp_sf.replace("Satış Fiyatı", "").replace("\n", "").replace(" ", "").replace("₺", "")
-            
+            kp_sf = kp_sf.text
+            kp_sf = kp_sf.replace("Satış Fiyatı", "").replace(
+                "\n", "").replace(" ", "").replace("₺", "")
+
             #! String Değiştirme Son
             kp_sf = float(kp_sf)
             if len(kopazarsatis) < 9:
@@ -185,74 +188,79 @@ def c_klasgame(klsgame):
     except Exception as e:
 
         print("klsgame_err", e)
-        klasgamealis=[0 for i in range(9)]
-        klasgamesatis=[0 for i in range(9)]
+        klasgamealis = [0 for i in range(9)]
+        klasgamesatis = [0 for i in range(9)]
     return [klasgamealis, klasgamesatis]
 
     # * OYUNFOR-------OYUNFOR-------OYUNFOR-------OYUNFOR-------OYUNFOR-------OYUNFOR-------OYUNFOR-------OYUNFOR-------OYUNFOR-------OYUNFOR-------OYUNFOR-------
 
 
 def job():
-    headers={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36'}
-    time.sleep(1)
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36'}
+    
     urls = ["https://www.bynogame.com/tr/oyunlar/knight-online/gold-bar",
-            "https://www.oyunfor.com/knight-online/gb-gold-bar",
-            "https://www.kopazar.com/knight-online-gold-bar",
-            "https://www.klasgame.com/goldbar/knightonline/knight-online-gb-goldbar-premium-cash",
-            "https://www.yesilyurtgame.com/oyun-parasi/knight-online-goldbar-gb"
+            "https://www.oyunfor.com/knight-online/gb-gold-bar",          
+            "https://www.kopazar.com/knight-online-gold-bar",     
+            "https://www.klasgame.com/goldbar/knightonline/knight-online-gb-goldbar-premium-cash"
+                    
             ]
-    rs = (grequests.get(u,headers=headers) for u in urls)
+    rs = (grequests.get(u, headers=headers) for u in urls)
 
     x = grequests.map(rs)
     soup = BeautifulSoup(x[0].content, "lxml")
     oynfor = BeautifulSoup(x[1].content, "lxml")
-    kopzr = BeautifulSoup(x[2].content, "html.parser")
+    kopzr = BeautifulSoup(x[2].content, "lxml")
     klsgame = BeautifulSoup(x[3].content, "lxml")
-    yygsoup = BeautifulSoup(x[4].content, "lxml")
-
+    # yygsoup = BeautifulSoup(x[4].content, "lxml")
+    
+    def control(liste):
+        return (len(liste[0]) < 9 or (len(liste[0]) != len(liste[1])))
+          
+        
     try:
         yyg_data = c_yyg()
-        if len(yyg_data[0])<9 or (len(yyg_data[0]) != len(yyg_data[1])):
-            yyg_data[0]=['err' for i in range(9)]
-            yyg_data[1]=['err' for i in range(9)]
+        if control(yyg_data):
+            yyg_data[0] = ['err' for i in range(9)]
+            yyg_data[1] = ['err' for i in range(9)]
     except:
-        yyg_data=[[],[]]
-        yyg_data[0]=['err' for i in range(9)]
-        yyg_data[1]=['err' for i in range(9)]
+        yyg_data = [[], []]
+        yyg_data[0] = ['err' for i in range(9)]
+        yyg_data[1] = ['err' for i in range(9)]
     try:
         bynogame_data = c_bynogame(soup)
-        if len(bynogame_data[0])<9 or (len(bynogame_data[0]) != len(bynogame_data[1])):
-            bynogame_data[0]=['err' for i in range(9)]
-            bynogame_data[1]=['err' for i in range(9)]
+        if control(bynogame_data):
+            bynogame_data[0] = ['err' for i in range(9)]
+            bynogame_data[1] = ['err' for i in range(9)]
     except:
-        bynogame_data=[[],[]]
+        bynogame_data = [[], []]
         bynogame_data[0] = ['err' for i in range(9)]
         bynogame_data[1] = ['err' for i in range(9)]
     try:
         kopazar_data = c_kopazar(kopzr)
-        if len(kopazar_data[0])<9 or (len(kopazar_data[0]) != len(kopazar_data[1])):
-            kopazar_data[0]=['err' for i in range(9)]
-            kopazar_data[1]=['err' for i in range(9)]
+        if control(kopazar_data):
+            kopazar_data[0] = ['err' for i in range(9)]
+            kopazar_data[1] = ['err' for i in range(9)]
     except:
-        kopazar_data=[[],[]]
+        kopazar_data = [[], []]
         kopazar_data[0] = ['err' for i in range(9)]
         kopazar_data[1] = ['err' for i in range(9)]
     try:
         klasgame_data = c_klasgame(klsgame)
-        if len(klasgame_data[0])<9 or (len(klasgame_data[0]) != len(klasgame_data[1])):
-            klasgame_data[0]=['err' for i in range(9)]
-            klasgame_data[1]=['err' for i in range(9)]
+        if control(klasgame_data):
+            klasgame_data[0] = ['err' for i in range(9)]
+            klasgame_data[1] = ['err' for i in range(9)]
     except:
-        klasgame_data=[[],[]]
+        klasgame_data = [[], []]
         klasgame_data[0] = ['err' for i in range(9)]
         klasgame_data[1] = ['err' for i in range(9)]
     try:
         oyunfor_data = c_oyunfor(oynfor)
-        if len(oyunfor_data[0])<9 or (len(oyunfor_data[0]) != len(oyunfor_data[1])):
-            oyunfor_data[0]=['err' for i in range(9)]
-            oyunfor_data[1]=['err' for i in range(9)]
+        if control(oyunfor_data):
+            oyunfor_data[0] = ['err' for i in range(9)]
+            oyunfor_data[1] = ['err' for i in range(9)]
     except:
-        oyunfor_data=[[],[]]
+        oyunfor_data = [[], []]
         oyunfor_data[0] = ['err' for i in range(9)]
         oyunfor_data[1] = ['err' for i in range(9)]
 
@@ -310,8 +318,6 @@ def job():
     yyg_html = df_yyg.to_html(
         index=False, classes='Yyg', border='0', justify='left')
     klasgame_html = df_klasgame.to_html(
-        index=False, classes='Klasgame', border='0', justify='left')   
-    
-    
+        index=False, classes='Klasgame', border='0', justify='left')
 
     return [kopazar_html, bynogame_html, oyunfor_html, yyg_html, klasgame_html]
