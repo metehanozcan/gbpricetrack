@@ -22,4 +22,5 @@ lxml
 requests
 pandas
 flask
+cchardet
 `
