@@ -13,22 +13,19 @@ def c_oyunfor(oynfor):
     fiyat_oynfor = oynfor.find_all(class_="button desktop sellToUsBtn")
 
     for l in fiyat_oynfor:
-
         textlm = l.text
-        textlm = textlm.replace("Bize Sat ", "")
-        textlm = textlm.replace("TL", "")
-        textlm = textlm.replace("\n", "")
-        textlm = float(textlm)
+        textlm = textlm.replace("Bize Sat ", "").replace("TL", "").replace("\n", "")      
+        
+        
         if len(oyunforalis) < 9:
-            oyunforalis.append(textlm * 10)
+            oyunforalis.append(float(textlm) * 10)
         else:
             break
 
     for k in oynfor.find_all(class_="flex-row mobile"):
         textlms = k.text
-        textlms = textlms.replace(" ", "")
-        textlms = textlms.replace("TL", "")
-        textlms = textlms.replace("\n", "")
+        textlms = textlms.replace(" ", "").replace("TL", "").replace("\n", "")
+        
         try:
             if len(oyunforsatis) < 9:
                 oyunforsatis.append(float(textlms) * 10)
@@ -41,14 +38,15 @@ def c_oyunfor(oynfor):
     return [oyunforalis, oyunforsatis]
 
 
-def c_yyg():
+def  c_yyg():
+    header={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36'}
     yygalis = []
     yygsatis = []
     while not yygalis:
         time.sleep(0.1)
 
         yyg = requests.get(
-            "https://www.yesilyurtgame.com/oyun-parasi/knight-online-goldbar-gb", timeout=5
+            "https://www.yesilyurtgame.com/oyun-parasi/knight-online-goldbar-gb", timeout=5,headers=header
         )
         yygsoup = BeautifulSoup(yyg.content, "lxml")
 
@@ -89,19 +87,17 @@ def c_bynogame(soup):
     try:
         for i in tler.find_all(class_="col"):
             i = i.text
-
-            i = i.replace('TL', "")
-            i = i.replace('\n', "")
-            i = i.replace(',', ".")
+            i = i.replace('TL', "").replace('\n', "").replace(',', ".")
+            
+                        
             if len(bynogamealis) < 9:
                 bynogamealis.append(float(i))
 
         for i in tler.find_all(class_="btn btn-block px-4 py-3 font-weight-bolder btn-outline-bng-black p-2"):
 
             i = i.text
-            i = i.replace("TL'den BİZE SAT", "")
-            i = i.replace('\n', "")
-            i = i.replace(',', ".")
+            i = i.replace("TL'den BİZE SAT", "").replace('\n', "").replace(',', ".")
+            
             if len(bynogamesatis) < 9:
                 bynogamesatis.append(float(i))
         print("BynoGame Success", bynogamealis, bynogamesatis)
@@ -120,8 +116,8 @@ def c_kopazar(kopzr):
     try:
         for kp_af in kopzr.find_all(class_="caret-up"):
             kp_af = kp_af.string
-            kp_af = kp_af.replace(" ", "")
-            kp_af = kp_af.replace("₺", "")
+            kp_af = kp_af.replace(" ", "").replace("₺", "")
+            
             kp_af = float(kp_af)
             if len(kopazaralis) < 9:
                 kopazaralis.append(kp_af * 10)
@@ -141,11 +137,9 @@ def c_kopazar(kopzr):
         ):
 
             #! String Değiştirme
-            kp_sf = kp_sf.text
-            kp_sf = kp_sf.replace("Satış Fiyatı", "")
-            kp_sf = kp_sf.replace("\n", "")
-            kp_sf = kp_sf.replace(" ", "")
-            kp_sf = kp_sf.replace("₺", "")
+            kp_sf = kp_sf.text            
+            kp_sf = kp_sf.replace("Satış Fiyatı", "").replace("\n", "").replace(" ", "").replace("₺", "")
+            
             #! String Değiştirme Son
             kp_sf = float(kp_sf)
             if len(kopazarsatis) < 9:
@@ -199,20 +193,23 @@ def c_klasgame(klsgame):
 
 
 def job():
+    headers={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36'}
     time.sleep(1)
     urls = ["https://www.bynogame.com/tr/oyunlar/knight-online/gold-bar",
             "https://www.oyunfor.com/knight-online/gb-gold-bar",
             "https://www.kopazar.com/knight-online-gold-bar",
             "https://www.klasgame.com/goldbar/knightonline/knight-online-gb-goldbar-premium-cash",
-
+            "https://www.yesilyurtgame.com/oyun-parasi/knight-online-goldbar-gb"
             ]
-    rs = (grequests.get(u) for u in urls)
+    rs = (grequests.get(u,headers=headers) for u in urls)
 
     x = grequests.map(rs)
     soup = BeautifulSoup(x[0].content, "lxml")
     oynfor = BeautifulSoup(x[1].content, "lxml")
     kopzr = BeautifulSoup(x[2].content, "html.parser")
     klsgame = BeautifulSoup(x[3].content, "lxml")
+    yygsoup = BeautifulSoup(x[4].content, "lxml")
+
     try:
         yyg_data = c_yyg()
         if len(yyg_data[0])<9 or (len(yyg_data[0]) != len(yyg_data[1])):
