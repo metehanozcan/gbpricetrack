@@ -214,55 +214,54 @@ def job():
     klsgame = BeautifulSoup(x[3].content, "lxml")
     # yygsoup = BeautifulSoup(x[4].content, "lxml")
     
-    def control(liste):
-        return (len(liste[0]) < 9 or (len(liste[0]) != len(liste[1])))
+    def control(liste=None):        
+        def listpr():
+            err_list = [[], []]
+            err_list[0] = ['err' for i in range(9)]
+            err_list[1] = ['err' for i in range(9)]
+            return err_list
+
+        if not liste or not liste[0] or not liste[1]:
+            return listpr()
+        elif (len(liste[0]) < 9 or (len(liste[0]) != len(liste[1]))):        
+            return listpr()
+        else:
+            return liste
           
         
     try:
         yyg_data = c_yyg()
-        if control(yyg_data):
-            yyg_data[0] = ['err' for i in range(9)]
-            yyg_data[1] = ['err' for i in range(9)]
+        yyg_data=control(yyg_data)
+        
     except:
-        yyg_data = [[], []]
-        yyg_data[0] = ['err' for i in range(9)]
-        yyg_data[1] = ['err' for i in range(9)]
+        yyg_data=control()
+        
+        
     try:
         bynogame_data = c_bynogame(soup)
-        if control(bynogame_data):
-            bynogame_data[0] = ['err' for i in range(9)]
-            bynogame_data[1] = ['err' for i in range(9)]
+        bynogame_data=control(bynogame_data)
     except:
-        bynogame_data = [[], []]
-        bynogame_data[0] = ['err' for i in range(9)]
-        bynogame_data[1] = ['err' for i in range(9)]
+        bynogame_data=control()
+    
+    
     try:
         kopazar_data = c_kopazar(kopzr)
-        if control(kopazar_data):
-            kopazar_data[0] = ['err' for i in range(9)]
-            kopazar_data[1] = ['err' for i in range(9)]
+        kopazar_data=control(kopazar_data)
     except:
-        kopazar_data = [[], []]
-        kopazar_data[0] = ['err' for i in range(9)]
-        kopazar_data[1] = ['err' for i in range(9)]
+        kopazar_data=control()
+        
+        
     try:
         klasgame_data = c_klasgame(klsgame)
-        if control(klasgame_data):
-            klasgame_data[0] = ['err' for i in range(9)]
-            klasgame_data[1] = ['err' for i in range(9)]
+        klasgame_data=control(klasgame_data)
+        
     except:
-        klasgame_data = [[], []]
-        klasgame_data[0] = ['err' for i in range(9)]
-        klasgame_data[1] = ['err' for i in range(9)]
+        klasgame_data=control()
     try:
         oyunfor_data = c_oyunfor(oynfor)
-        if control(oyunfor_data):
-            oyunfor_data[0] = ['err' for i in range(9)]
-            oyunfor_data[1] = ['err' for i in range(9)]
-    except:
-        oyunfor_data = [[], []]
-        oyunfor_data[0] = ['err' for i in range(9)]
-        oyunfor_data[1] = ['err' for i in range(9)]
+        oyunfor_data = control(oyunfor_data)
+    except:        
+        oyunfor_data = control()
 
     df_kopazar = pd.DataFrame({"Sunucu": ["Altar", "Vega", "Sirius", "Ares", "Diez", "Gordion", "Rosetta", "Olympia", "Destan"],
 
