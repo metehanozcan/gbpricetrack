@@ -17,7 +17,7 @@ x.append('') #* Response
 @app.route('/')
 async def index():    
     
-    if x[1] == True: #* Iniate 
+    if x[1] == True: #* Initiate 
         data= await job()
         x[1]=False
         x[2] = data
