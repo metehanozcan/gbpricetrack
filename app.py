@@ -12,7 +12,7 @@ app.config["TEMPLATES_AUTO_RELOAD"] = True
 old_t = datetime.datetime.utcnow()
 x=[]
 x.append(old_t) #*Server Start Time
-x.append(True) #* IsIniate
+x.append(True) #* Is initiate
 x.append('') #* Response
 @app.route('/')
 async def index():    
