@@ -43,25 +43,24 @@ def c_oyunfor(oyunfor_request_data):
         try:
             raw_txt_oyunfor_sell = i.text
             raw_txt_oyunfor_sell = raw_txt_oyunfor_sell.replace(
-            " ", "").replace("TL", "").replace("\n", "")
+                " ", "").replace("TL", "").replace("\n", "")
 
             if len(oyunforsatis) < 9:
                 oyunforsatis.append(float(raw_txt_oyunfor_sell) * 10)
             else:
                 break
-        except: #* For eliminating unconvertable strings.
+        except:  # * For eliminating unconvertable strings.
             pass
     print("Oyunfor Success.", oyunforalis, oyunforsatis)
     return [oyunforalis, oyunforsatis]
 
 
-
 def c_yyg():
     """
     This functions creates its own response due to technical conditions, then arranges it so that we only get price information.
-    
+
     No Args
-    
+
     Returns:
         list: returns list which contains two seperate list 
         yygalis = buy price list which contains scraped float variables.
@@ -74,7 +73,7 @@ def c_yyg():
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36'}
     yygalis = []
     yygsatis = []
-    while not yygalis:        
+    while not yygalis:
 
         yyg = requests.get(
             "https://www.yesilyurtgame.com/oyun-parasi/knight-online-goldbar-gb", timeout=5, headers=header
@@ -85,15 +84,17 @@ def c_yyg():
             try:
                 raw_txt_yyg_data = i.text
 
-                raw_txt_yyg_buy = re.findall(r"GB Alış Fiyatı :([^TL]+)", raw_txt_yyg_data)
-                raw_txt_yyg_sell = re.findall(r"Satış Fiyatı :([^TL]+)", raw_txt_yyg_data)
+                raw_txt_yyg_buy = re.findall(
+                    r"GB Alış Fiyatı :([^TL]+)", raw_txt_yyg_data)
+                raw_txt_yyg_sell = re.findall(
+                    r"Satış Fiyatı :([^TL]+)", raw_txt_yyg_data)
 
                 raw_txt_yyg_buy = "".join(raw_txt_yyg_buy)
                 raw_txt_yyg_sell = "".join(raw_txt_yyg_sell)
 
                 raw_txt_yyg_buy.strip(" \n")
                 raw_txt_yyg_sell.strip(" \n")
-                
+
                 if(len(yygalis) < 9):
                     yygalis.append(float(raw_txt_yyg_buy)*10)
                     yygsatis.append(float(raw_txt_yyg_sell)*10)
@@ -102,20 +103,18 @@ def c_yyg():
 
             except Exception as e:
                 print("Yyg_err", e)
-                
+
     print("YYG Success.", yygalis, yygsatis)
     return [yygalis, yygsatis]
 
 
-
 def c_bynogame(bynogame_request_data):
-    
     """
     This functions simply takes the response from requests function, arranges it so that we only get price information.
-    
+
     Args:
         bynogame_request_data (object): requests response from oyunfor gb price pag
-    
+
     Returns:
         list: returns list which contains two seperate list 
         bynogamealis = buy price list which contains scraped float variables.
@@ -124,7 +123,7 @@ def c_bynogame(bynogame_request_data):
         returns #* list [  [bynogamesatis],[bynogamealis]  ] 
 
     """
-    
+
     bynogamealis = []
     bynogamesatis = []
     raw_txt_bynogame = bynogame_request_data.find(
@@ -133,7 +132,8 @@ def c_bynogame(bynogame_request_data):
     try:
         for i in raw_txt_bynogame.find_all(class_="col"):
             raw_txt_bynogame_buy = i.text
-            raw_txt_bynogame_buy = raw_txt_bynogame_buy.replace('TL', "").replace('\n', "").replace(',', ".")
+            raw_txt_bynogame_buy = raw_txt_bynogame_buy.replace(
+                'TL', "").replace('\n', "").replace(',', ".")
 
             if len(bynogamealis) < 9:
                 bynogamealis.append(float(raw_txt_bynogame_buy))
@@ -152,15 +152,13 @@ def c_bynogame(bynogame_request_data):
         print("Bynogame_err", e)
 
 
-
 def c_kopazar(kopazar_request_data):
-    
     """
     This functions simply takes the response from requests function, arranges it so that we only get price information.
-    
+
     Args:
         kopazar_request_data (object): requests response from oyunfor gb price pag
-    
+
     Returns:
         list: returns list which contains two seperate list 
         kopazaralis = buy price list which contains scraped float variables.
@@ -172,11 +170,11 @@ def c_kopazar(kopazar_request_data):
     kopazaralis = []
     kopazarsatis = []
 
-    
     try:
         for raw_txt_kopazar_buy in kopazar_request_data.find_all(class_="caret-up"):
             raw_txt_kopazar_buy = raw_txt_kopazar_buy.string
-            raw_txt_kopazar_buy = raw_txt_kopazar_buy.replace(" ", "").replace("₺", "")
+            raw_txt_kopazar_buy = raw_txt_kopazar_buy.replace(
+                " ", "").replace("₺", "")
 
             raw_txt_kopazar_buy = float(raw_txt_kopazar_buy)
             if len(kopazaralis) < 9:
@@ -184,10 +182,8 @@ def c_kopazar(kopazar_request_data):
 
     except Exception as e:
 
-        print("raw_txt_kopazar_buy:", e)   
-    
+        print("raw_txt_kopazar_buy:", e)
 
-    
     try:
         for raw_txt_kopazar_sell in kopazar_request_data.find_all(
             class_="col-xl-3 col-lg-6 col-sm-3 col-6 order-xl-3 order-lg-2 order-sm-3 order-2 xl-text-right text-center"
@@ -198,26 +194,24 @@ def c_kopazar(kopazar_request_data):
             raw_txt_kopazar_sell = raw_txt_kopazar_sell.replace("Satış Fiyatı", "").replace(
                 "\n", "").replace(" ", "").replace("₺", "")
 
-
             raw_txt_kopazar_sell = float(raw_txt_kopazar_sell)
             if len(kopazarsatis) < 9:
                 kopazarsatis.append(raw_txt_kopazar_sell * 10)
 
     except Exception as e:
         print("raw_txt_kopazar_sell:", e)
-        
+
     print("Kopazar Success.", kopazaralis, kopazarsatis)
     return [kopazaralis, kopazarsatis]
-
 
 
 def c_klasgame(klasgame_request_data):
     """
     This functions simply takes the response from requests function, arranges it so that we only get price information.
-    
+
     Args:
         bynogame_request_data (object): requests response from oyunfor gb price pag
-    
+
     Returns:
         list: returns list which contains two seperate list 
         klasgamealis = buy price list which contains scraped float variables.
@@ -227,24 +221,26 @@ def c_klasgame(klasgame_request_data):
 
     """
     klasgamealis = []
-    klasgamesatis = []    
+    klasgamesatis = []
     try:
         raw_txt_klasgame_data = klasgame_request_data.find(
             class_="goldbar-table table table-borderless product-table-item"
         )
         v = 2
         for i in raw_txt_klasgame_data.find_all(class_="font-weight-bold price"):
-            
+
             raw_txt_klasgame_buy_sell_data = i.find("span").text
-            raw_txt_klasgame_buy_sell_data = raw_txt_klasgame_buy_sell_data.replace(",", ".")
-            
-            raw_txt_klasgame_buy_sell_data = float(raw_txt_klasgame_buy_sell_data)
-            
+            raw_txt_klasgame_buy_sell_data = raw_txt_klasgame_buy_sell_data.replace(
+                ",", ".")
+
+            raw_txt_klasgame_buy_sell_data = float(
+                raw_txt_klasgame_buy_sell_data)
+
             if len(klasgamealis) <= 9 and len(klasgamesatis) < 9:
-                if v % 2 == 0: #* Buy Data Block
+                if v % 2 == 0:  # * Buy Data Block
                     klasgamealis.append(raw_txt_klasgame_buy_sell_data*10)
                     v += 1
-                elif v % 2 != 0: #* Sell Data Block
+                elif v % 2 != 0:  # * Sell Data Block
                     klasgamesatis.append(raw_txt_klasgame_buy_sell_data*10)
                     v += 1
             else:
@@ -254,12 +250,12 @@ def c_klasgame(klasgame_request_data):
         print("klsgame_err", e)
         # klasgamealis = [0 for i in range(9)]
         # klasgamesatis = [0 for i in range(9)]
-    print("Klasgame Sucsess",klasgamealis,klasgamesatis)
+    print("Klasgame Sucsess", klasgamealis, klasgamesatis)
     return [klasgamealis, klasgamesatis]
 
 
 async def job():
-    
+
     urls = ["https://www.bynogame.com/tr/oyunlar/knight-online/gold-bar",
             "https://www.oyunfor.com/knight-online/gb-gold-bar",
             "https://www.kopazar.com/knight-online-gold-bar",
@@ -272,66 +268,62 @@ async def job():
     oynfor = BeautifulSoup(x[1].content, "lxml")
     kopzr = BeautifulSoup(x[2].content, "lxml")
     klsgame = BeautifulSoup(x[3].content, "lxml")
-    
+
     def control(liste=None):
         """Checks if list is empty or checks length of list[0] and list[1] equal.
-            
-            
+
+
             returns the same list if there is no error. 
             if there is, returns liste filled with err.
-             
-            
-            
+
+
+
         Args:
             liste (list):  Defaults to None.
         """
-        
+
         def listpr():
             err_list = [[], []]
             err_list[0] = ['err' for i in range(9)]
             err_list[1] = ['err' for i in range(9)]
             return err_list
-            
+
         if not liste or not liste[0] or not liste[1]:
             return listpr()
-        elif (len(liste[0]) < 9 or (len(liste[0]) != len(liste[1]))):        
+        elif (len(liste[0]) < 9 or (len(liste[0]) != len(liste[1]))):
             return listpr()
         else:
             return liste
-          
-        
+
     try:
         yyg_data = c_yyg()
-        yyg_data=control(yyg_data)
-        
+        yyg_data = control(yyg_data)
+
     except:
-        yyg_data=control()
-        
-        
+        yyg_data = control()
+
     try:
         bynogame_data = c_bynogame(soup)
-        bynogame_data=control(bynogame_data)
+        bynogame_data = control(bynogame_data)
     except:
-        bynogame_data=control()
-    
-    
+        bynogame_data = control()
+
     try:
         kopazar_data = c_kopazar(kopzr)
-        kopazar_data=control(kopazar_data)
+        kopazar_data = control(kopazar_data)
     except:
-        kopazar_data=control()
-        
-        
+        kopazar_data = control()
+
     try:
         klasgame_data = c_klasgame(klsgame)
-        klasgame_data=control(klasgame_data)
-        
+        klasgame_data = control(klasgame_data)
+
     except:
-        klasgame_data=control()
+        klasgame_data = control()
     try:
         oyunfor_data = c_oyunfor(oynfor)
         oyunfor_data = control(oyunfor_data)
-    except:        
+    except:
         oyunfor_data = control()
 
     df_kopazar = pd.DataFrame({"Sunucu": ["Altar", "Vega", "Sirius", "Ares", "Diez", "Gordion", "Rosetta", "Olympia", "Destan"],
@@ -388,8 +380,6 @@ async def job():
     yyg_html = df_yyg.to_html(
         index=False, classes='Yyg', border='0', justify='left')
     klasgame_html = df_klasgame.to_html(
-        index=False, classes='Klasgame', border='0', justify='left')   
-    
-    
+        index=False, classes='Klasgame', border='0', justify='left')
 
     return [kopazar_html, bynogame_html, oyunfor_html, yyg_html, klasgame_html]
