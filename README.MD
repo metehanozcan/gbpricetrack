@@ -21,6 +21,6 @@ beautifulsoup4
 lxml
 requests
 pandas
-flask
+flask[async]
 cchardet
 `
