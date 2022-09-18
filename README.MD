@@ -5,7 +5,8 @@
 
 `You will have to wait for 15-20 seconds for dyno to wake up. After that, page will be loaded.`
 
-![App Preview](https://gcdnb.pbrd.co/images/T1GRipeKGEhc.png?o=1 "App Preview")
+![image](https://user-images.githubusercontent.com/70481060/190916217-67e0aa02-ea37-4ecf-942e-0c2959d5b6c8.png)
+
 
 ## What does this app do? 
 It pulls the price data from the websites we have determined and displays it in simple tables on our home page. Our data is updated periodically.
