@@ -1,3 +1,4 @@
+# Heroku free dyno is out of service. 
 # A basic real-time price tracking website that collects data via python.
 [GbFiyat Website](http://gbfiyat.herokuapp.com/ "GbFiyat Website")
 
