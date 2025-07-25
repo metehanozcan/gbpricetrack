@@ -2,20 +2,22 @@
 
 <script>
   $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
-  (function(){
+  function updateData() {
       $.getJSON(
-          $SCRIPT_ROOT+"/update", // Your AJAX route here
+          $SCRIPT_ROOT + "/update",
           function(data) {
               $("#table").html(data.table);
               $("#table1").html(data.table1);
               $("#table2").html(data.table2);
               $("#table3").html(data.table3);
               $("#table4").html(data.table4);
-
           }
       );
-      150000;
-  })();
+  }
+  $(function() {
+      updateData();
+      setInterval(updateData, 150000);
+  });
 </script>
 
 <style>

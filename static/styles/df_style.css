@@ -1,11 +1,8 @@
 body {
   -ms-overflow-style: none; /* for Internet Explorer, Edge */
   scrollbar-width: none; /* for Firefox */
-  overflow-y: scro;
-background-size: cover;
-  
-  
-
+  overflow-y: scroll;
+  background-size: cover;
 }
 
 body::-webkit-scrollbar {
@@ -19,12 +16,12 @@ div {
   
 }
 
-.kopazar {
+.Kopazar {
   max-width:100%;
   table-layout: fixed;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 5;
+  margin-bottom: 5px;
   border-collapse: collapse;
 
   font-size: 0.9em;
@@ -34,38 +31,38 @@ div {
   width: 70%;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
-.kopazar thead tr {
+.Kopazar thead tr {
   background-color: #009879;
   color: #ffffff;
   text-align: left;
 }
-.kopazar th,
-.kopazar td {
+.Kopazar th,
+.Kopazar td {
   padding: 12px 15px;
 }
-.kopazar tbody tr {
+.Kopazar tbody tr {
   border-bottom: 1px solid #dddddd;
 }
 
-.kopazar tbody tr:nth-of-type(even) {
+.Kopazar tbody tr:nth-of-type(even) {
   background-color: #f3f3f3;
 }
 
-.kopazar tbody tr:last-of-type {
+.Kopazar tbody tr:last-of-type {
   border-bottom: 2px solid #000000;
 }
-.kopazar tbody tr:hover {
+.Kopazar tbody tr:hover {
   font-weight: bold;
   color: #009879;
 }
 
-.oyunfor {
+.Oyunfor {
   max-width: 100%;
   table-layout: fixed;
   border-collapse: collapse;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 5;
+  margin-bottom: 5px;
   font-size: 0.9em;
   font-family: "Fira Code", monospace;
   border-radius: 5px 5px 0 0;
@@ -73,38 +70,38 @@ div {
   width: 70%;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
-.oyunfor thead tr {
+.Oyunfor thead tr {
   background-color: #dfa70d;
   color: #ffffff;
   text-align: left;
 }
-.oyunfor th,
-.oyunfor td {
+.Oyunfor th,
+.Oyunfor td {
   padding: 12px 15px;
 }
-.oyunfor tbody tr {
+.Oyunfor tbody tr {
   border-bottom: 1px solid #dddddd;
 }
 
-.oyunfor tbody tr:nth-of-type(even) {
+.Oyunfor tbody tr:nth-of-type(even) {
   background-color: #f3f3f3;
 }
 
-.oyunfor tbody tr:last-of-type {
+.Oyunfor tbody tr:last-of-type {
   border-bottom: 2px solid #000000;
 }
-.oyunfor tbody tr:hover {
+.Oyunfor tbody tr:hover {
   font-weight: bold;
   color: #dfa70d;
 }
 
-.klasgame {
+.Klasgame {
   max-width: 100%;
   table-layout: fixed;
   border-collapse: collapse;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 5;
+  margin-bottom: 5px;
   font-size: 0.9em;
   font-family: "Fira Code", monospace;
   border-radius: 5px 5px 0 0;
@@ -112,37 +109,37 @@ div {
   width: 70%;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
-.klasgame thead tr {
+.Klasgame thead tr {
   background-color: #6b0c5e;
   color: #ffffff;
   text-align: left;
 }
-.klasgame th,
-.klasgame td {
+.Klasgame th,
+.Klasgame td {
   padding: 12px 15px;
 }
-.klasgame tbody tr {
+.Klasgame tbody tr {
   border-bottom: 1px solid #dddddd;
 }
 
-.klasgame tbody tr:nth-of-type(even) {
+.Klasgame tbody tr:nth-of-type(even) {
   background-color: #f3f3f3;
 }
 
-.klasgame tbody tr:last-of-type {
+.Klasgame tbody tr:last-of-type {
   border-bottom: 2px solid #000000;
 }
-.klasgame tbody tr:hover {
+.Klasgame tbody tr:hover {
   font-weight: bold;
   color: #6b0c5e;
 }
-.bynogame {
+.Bynogame {
   max-width: 100%;
   table-layout: fixed;
   border-collapse: collapse;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 5;
+  margin-bottom: 5px;
   font-size: 0.9em;
   font-family: "Fira Code", monospace;
   border-radius: 5px 5px 0 0;
@@ -150,37 +147,37 @@ div {
   width: 70%;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
-.bynogame thead tr {
+.Bynogame thead tr {
   background-color: #2e0ca8;
   color: #ffffff;
   text-align: left;
 }
-.bynogame th,
-.bynogame td {
+.Bynogame th,
+.Bynogame td {
   padding: 12px 15px;
 }
-.bynogame tbody tr {
+.Bynogame tbody tr {
   border-bottom: 1px solid #dddddd;
 }
 
-.bynogame tbody tr:nth-of-type(even) {
+.Bynogame tbody tr:nth-of-type(even) {
   background-color: #f3f3f3;
 }
 
-.bynogame tbody tr:last-of-type {
+.Bynogame tbody tr:last-of-type {
   border-bottom: 2px solid #000000;
 }
-.bynogame tbody tr:hover {
+.Bynogame tbody tr:hover {
   font-weight: bold;
   color: #2e0ca8;
 }
-.yyg {
+.Yyg {
   max-width: 100%;
   table-layout: fixed;
   border-collapse: collapse;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 5;
+  margin-bottom: 5px;
   font-size: 0.9em;
   font-family: "Fira Code", monospace;
   border-radius: 5px 5px 0 0;
@@ -188,27 +185,27 @@ div {
   width: 70%;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
-.yyg thead tr {
+.Yyg thead tr {
   background-color: #0d441e;
   color: #ffffff;
   text-align: left;
 }
-.yyg th,
-.yyg td {
+.Yyg th,
+.Yyg td {
   padding: 12px 15px;
 }
-.yyg tbody tr {
+.Yyg tbody tr {
   border-bottom: 1px solid #dddddd;
 }
 
-.yyg tbody tr:nth-of-type(even) {
+.Yyg tbody tr:nth-of-type(even) {
   background-color: #f3f3f3;
 }
 
-.yyg tbody tr:last-of-type {
+.Yyg tbody tr:last-of-type {
   border-bottom: 2px solid #000000;
 }
-.yyg tbody tr:hover {
+.Yyg tbody tr:hover {
   font-weight: bold;
   color: #0d441e;
 }
