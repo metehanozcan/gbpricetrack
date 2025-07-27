@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+<title>Gbfiyat</title>
+<style>
+body {
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none; /* for Firefox */
+  overflow-y: scroll;
+  background-size: cover;
+}
+
+body::-webkit-scrollbar {
+  display: none; /* for Chrome, Safari, and Opera */
+}
+div {
+  margin-left: auto;
+  margin-right: auto;
+  
+  
+  
+}
+
+.Kopazar {
+  max-width:100%;
+  table-layout: fixed;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5px;
+  border-collapse: collapse;
+
+  font-size: 0.9em;
+  font-family: "Fira Code", monospace;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  width: 70%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.Kopazar thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
+}
+.Kopazar th,
+.Kopazar td {
+  padding: 12px 15px;
+}
+.Kopazar tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.Kopazar tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.Kopazar tbody tr:last-of-type {
+  border-bottom: 2px solid #000000;
+}
+.Kopazar tbody tr:hover {
+  font-weight: bold;
+  color: #009879;
+}
+
+.Oyunfor {
+  max-width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5px;
+  font-size: 0.9em;
+  font-family: "Fira Code", monospace;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  width: 70%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.Oyunfor thead tr {
+  background-color: #dfa70d;
+  color: #ffffff;
+  text-align: left;
+}
+.Oyunfor th,
+.Oyunfor td {
+  padding: 12px 15px;
+}
+.Oyunfor tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.Oyunfor tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.Oyunfor tbody tr:last-of-type {
+  border-bottom: 2px solid #000000;
+}
+.Oyunfor tbody tr:hover {
+  font-weight: bold;
+  color: #dfa70d;
+}
+
+.Klasgame {
+  max-width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5px;
+  font-size: 0.9em;
+  font-family: "Fira Code", monospace;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  width: 70%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.Klasgame thead tr {
+  background-color: #6b0c5e;
+  color: #ffffff;
+  text-align: left;
+}
+.Klasgame th,
+.Klasgame td {
+  padding: 12px 15px;
+}
+.Klasgame tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.Klasgame tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.Klasgame tbody tr:last-of-type {
+  border-bottom: 2px solid #000000;
+}
+.Klasgame tbody tr:hover {
+  font-weight: bold;
+  color: #6b0c5e;
+}
+.Bynogame {
+  max-width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5px;
+  font-size: 0.9em;
+  font-family: "Fira Code", monospace;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  width: 70%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.Bynogame thead tr {
+  background-color: #2e0ca8;
+  color: #ffffff;
+  text-align: left;
+}
+.Bynogame th,
+.Bynogame td {
+  padding: 12px 15px;
+}
+.Bynogame tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.Bynogame tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.Bynogame tbody tr:last-of-type {
+  border-bottom: 2px solid #000000;
+}
+.Bynogame tbody tr:hover {
+  font-weight: bold;
+  color: #2e0ca8;
+}
+.Yyg {
+  max-width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5px;
+  font-size: 0.9em;
+  font-family: "Fira Code", monospace;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  width: 70%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.Yyg thead tr {
+  background-color: #0d441e;
+  color: #ffffff;
+  text-align: left;
+}
+.Yyg th,
+.Yyg td {
+  padding: 12px 15px;
+}
+.Yyg tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.Yyg tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.Yyg tbody tr:last-of-type {
+  border-bottom: 2px solid #000000;
+}
+.Yyg tbody tr:hover {
+  font-weight: bold;
+  color: #0d441e;
+}
+
+.bubble {
+  display: block;
+  position: absolute;
+  cursor: pointer;
+}
+
+.bubble:hover:after {
+  background-color: green;
+}
+
+.bubble:after {
+  content: "";
+  background-color: green;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  position: absolute;
+  display: block;
+  top: 1px;
+  left: 1px;
+}
+
+.bubble .bubble-outer-dot {
+  margin: 1px;
+  display: block;
+  text-align: center;
+  opacity: 1;
+  background-color: green;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  -webkit-animation: bubble-pulse 1.5s linear infinite;
+  -moz-animation: bubble-pulse 1.5s linear infinite;
+  -o-animation: bubble-pulse 1.5s linear infinite;
+  animation: bubble-pulse 1.5s linear infinite;
+}
+
+.bubble .bubble-inner-dot {
+  display: block;
+  text-align: center;
+  opacity: 1;
+  background-color: green;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  -webkit-animation: bubble-pulse 1.5s linear infinite;
+  -moz-animation: bubble-pulse 1.5s linear infinite;
+  -o-animation: bubble-pulse 1.5s linear infinite;
+  animation: bubble-pulse 1.5s linear infinite;
+}
+
+.bubble .bubble-inner-dot:after {
+  content: "";
+  display: block;
+  text-align: center;
+  opacity: 1;
+  background-color: green;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  -webkit-animation: bubble-pulse 1.5s linear infinite;
+  -moz-animation: bubble-pulse 1.5s linear infinite;
+  -o-animation: bubble-pulse 1.5s linear infinite;
+  animation: bubble-pulse 1.5s linear infinite;
+}
+
+@-webkit-keyframes bubble-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.75;
+  }
+  25% {
+    transform: scale(1);
+    opacity: 0.75;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+@keyframes bubble-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.75;
+  }
+  25% {
+    transform: scale(1);
+    opacity: 0.75;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+@-moz-keyframes bubble-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.75;
+  }
+  25% {
+    transform: scale(1);
+    opacity: 0.75;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+@-o-keyframes bubble-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.75;
+  }
+  25% {
+    transform: scale(1);
+    opacity: 0.75;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+/*Center-div (Not part of the symbol)*/
+
+#center-div {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  width: 14px;
+  height: 14px;
+}
+</style>
+</head>
+<body>
+<div>
+  <div class="bubble">
+    <span class="bubble-outer-dot">
+      <span class="bubble-inner-dot"></span>
+    </span>
+  </div>
+  <div id="table"></div>
+  <div id="table1"></div>
+  <div id="table2"></div>
+  <div id="table3"></div>
+  <div id="table4"></div>
+</div>
+<script>
+const proxy = 'https://cors.isomorphic-git.io/';
+
+async function fetchHTML(url){
+  const response = await fetch(proxy + url);
+  if(!response.ok) throw new Error('Network error');
+  const text = await response.text();
+  return new DOMParser().parseFromString(text, 'text/html');
+}
+
+function control(data){
+  if(!data || !data[0].length || !data[1].length || data[0].length !== data[1].length || data[0].length < 9){
+    return [Array(9).fill('err'), Array(9).fill('err')];
+  }
+  return data;
+}
+
+function c_oyunfor(doc){
+  const buy=[]; const sell=[];
+  doc.querySelectorAll('.button.desktop.sellToUsBtn').forEach(el=>{
+    if(buy.length<9){
+      const v=parseFloat(el.textContent.replace('Bize Sat ','').replace('TL','').trim());
+      if(!isNaN(v)) buy.push(v*10);
+    }
+  });
+  doc.querySelectorAll('.flex-row.mobile').forEach(el=>{
+    const val=parseFloat(el.textContent.replace(/\s|TL/g,''));
+    if(!isNaN(val) && sell.length<9) sell.push(val*10);
+  });
+  return [buy,sell];
+}
+
+function c_yyg(doc){
+  const buy=[]; const sell=[];
+  doc.querySelectorAll('section').forEach(sec=>{
+    const t=sec.textContent;
+    const b=t.match(/GB Alış Fiyatı :([^TL]+)/);
+    const s=t.match(/Satış Fiyatı :([^TL]+)/);
+    if(b&&s&&buy.length<9){
+      buy.push(parseFloat(b[1].trim())*10);
+      sell.push(parseFloat(s[1].trim())*10);
+    }
+  });
+  return [buy,sell];
+}
+
+function c_bynogame(doc){
+  const buy=[]; const sell=[];
+  const cont=doc.querySelector('.col-xl-18.col-lg-24.col-md-24.order-1.order-sm-12');
+  if(cont){
+    cont.querySelectorAll('.col').forEach(el=>{
+      const v=parseFloat(el.textContent.replace('TL','').replace(/\n/g,'').replace(',','.'));
+      if(!isNaN(v) && buy.length<9) buy.push(v);
+    });
+    cont.querySelectorAll('.btn.btn-block.px-4.py-3.font-weight-bolder.btn-outline-bng-black.p-2').forEach(el=>{
+      const v=parseFloat(el.textContent.replace("TL'den BİZE SAT",'').replace('\n','').replace(',','.'));
+      if(!isNaN(v) && sell.length<9) sell.push(v);
+    });
+  }
+  return [buy,sell];
+}
+
+function c_kopazar(doc){
+  const buy=[]; const sell=[];
+  doc.querySelectorAll('.caret-up').forEach(el=>{
+    const v=parseFloat(el.textContent.replace(' ','').replace('₺',''));
+    if(!isNaN(v) && buy.length<9) buy.push(v*10);
+  });
+  doc.querySelectorAll('.col-xl-3.col-lg-6.col-sm-3.col-6.order-xl-3.order-lg-2.order-sm-3.order-2.xl-text-right.text-center').forEach(el=>{
+    const v=parseFloat(el.textContent.replace('Satış Fiyatı','').replace(/\n/g,'').replace(' ','').replace('₺',''));
+    if(!isNaN(v) && sell.length<9) sell.push(v*10);
+  });
+  return [buy,sell];
+}
+
+function c_klasgame(doc){
+  const buy=[]; const sell=[];
+  const cont=doc.querySelector('.goldbar-table.table.table-borderless.product-table-item');
+  if(cont){
+    let v=2;
+    cont.querySelectorAll('.font-weight-bold.price').forEach(el=>{
+      const span=el.querySelector('span');
+      if(span){
+        const val=parseFloat(span.textContent.replace(',','.'));
+        if(!isNaN(val) && buy.length<=9 && sell.length<9){
+          if(v%2===0){buy.push(val*10);}else{sell.push(val*10);} v++;}
+      }
+    });
+  }
+  return [buy,sell];
+}
+
+function prepareData(servers,buy,sell){
+  return servers.map((s,i)=>({server:s,buy:buy[i],sell:sell[i]})).sort((a,b)=>a.server.localeCompare(b.server));
+}
+
+function buildTable(cls,data,labels){
+  let html=`<table class="${cls}"><thead><tr><th>Sunucu</th><th>${labels[0]}</th><th>${labels[1]}</th></tr></thead><tbody>`;
+  data.forEach(r=>{html+=`<tr><td>${r.server}</td><td>${r.buy}</td><td>${r.sell}</td></tr>`});
+  html+='</tbody></table>';return html;
+}
+
+async function update(){
+  try{
+    const [bynogameDoc,oyunforDoc,kopazarDoc,klasgameDoc]=await Promise.all([
+      fetchHTML('https://www.bynogame.com/tr/oyunlar/knight-online/gold-bar'),
+      fetchHTML('https://www.oyunfor.com/knight-online/gb-gold-bar'),
+      fetchHTML('https://www.kopazar.com/knight-online-gold-bar'),
+      fetchHTML('https://www.klasgame.com/goldbar/knightonline/knight-online-gb-goldbar-premium-cash')
+    ]);
+    const yygDoc=await fetchHTML('https://www.yesilyurtgame.com/oyun-parasi/knight-online-goldbar-gb');
+
+    const kopazar=control(c_kopazar(kopazarDoc));
+    const bynogame=control(c_bynogame(bynogameDoc));
+    const oyunfor=control(c_oyunfor(oyunforDoc));
+    const yyg=control(c_yyg(yygDoc));
+    const klasgame=control(c_klasgame(klasgameDoc));
+
+    const servers_kopazar=['Altar','Vega','Sirius','Ares','Diez','Gordion','Rosetta','Olympia','Destan'];
+    const servers_bynogame=['Sirius','Vega','Altar','Destan','Olympia','Ares','Diez','Gordion','Rosetta'];
+    const servers_yyg=['Altar','Sirius','Vega','Destan','Rosetta','Olympia','Ares','Diez','Gordion'];
+    const servers_klasgame=['Altar','Sirius','Vega','Destan','Rosetta','Olympia','Ares','Diez','Gordion'];
+    const servers_oyunfor=['Altar','Sirius','Vega','Destan','Rosetta','Diez','Ares','Olympia','Gordion'];
+
+    document.getElementById('table').innerHTML=buildTable('Kopazar',prepareData(servers_kopazar,kopazar[0],kopazar[1]),['Kopazar Alış','Kopazar Satış']);
+    document.getElementById('table1').innerHTML=buildTable('Bynogame',prepareData(servers_bynogame,bynogame[0],bynogame[1]),['Bynogame Alış','Bynogame Satış']);
+    document.getElementById('table2').innerHTML=buildTable('Oyunfor',prepareData(servers_oyunfor,oyunfor[0],oyunfor[1]),['Oyunfor Alış','Oyunfor Satış']);
+    document.getElementById('table3').innerHTML=buildTable('Yyg',prepareData(servers_yyg,yyg[0],yyg[1]),['Yyg Alış','Yyg Satış']);
+    document.getElementById('table4').innerHTML=buildTable('Klasgame',prepareData(servers_klasgame,klasgame[0],klasgame[1]),['Klasgame Alış','Klasgame Satış']);
+  }catch(err){
+    console.error(err);
+  }
+}
+
+update();
+setInterval(update,150000);
+</script>
+</body>
+</html>
